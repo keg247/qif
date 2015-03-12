@@ -9,34 +9,30 @@ namespace QifApi.Transactions.Fields
         /// <summary>
         /// Category name:subcategory name
         /// </summary>
-        public const string CategoryName = "N";
+        public const char CategoryName = 'N';
         /// <summary>
         /// Description
         /// </summary>
-        public const string Description = "D";
+        public const char Description = 'D';
         /// <summary>
         /// Tax related if included, not tax related if omitted
         /// </summary>
-        public const string TaxRelated = "T";
+        public const char TaxRelated = 'T';
         /// <summary>
         /// Income category
         /// </summary>
-        public const string IncomeCategory = "I";
+        public const char IncomeCategory = 'I';
         /// <summary>
         /// If category is unspecified, assume expense type
         /// </summary>
-        public const string ExpenseCategory = "E";
+        public const char ExpenseCategory = 'E';
         /// <summary>
         /// Only in a Budget Amounts QIF file
         /// </summary>
-        public const string BudgetAmount = "B";
+        public const char BudgetAmount = 'B';
         /// <summary>
         /// Tax schedule information
         /// </summary>
-        public const string TaxSchedule = "R";
-        /// <summary>
-        /// End of entry
-        /// </summary>
-        public const string EndOfEntry = "^";
+        public const char TaxSchedule = 'R';
     }
 }

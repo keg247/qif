@@ -9,30 +9,26 @@ namespace QifApi.Transactions.Fields
         /// <summary>
         /// Name
         /// </summary>
-        public const string Name = "N";
+        public const char Name = 'N';
         /// <summary>
         /// Type of account
         /// </summary>
-        public const string AccountType = "T";
+        public const char AccountType = 'T';
         /// <summary>
         /// Description
         /// </summary>
-        public const string Description = "D";
+        public const char Description = 'D';
         /// <summary>
         /// Only for credit card account
         /// </summary>
-        public const string CreditLimit = "L";
+        public const char CreditLimit = 'L';
         /// <summary>
         /// Statement balance date
         /// </summary>
-        public const string StatementBalanceDate = "/";
+        public const char StatementBalanceDate = '/';
         /// <summary>
         /// Statement balance
         /// </summary>
-        public const string StatementBalance = "$";
-        /// <summary>
-        /// End of entry
-        /// </summary>
-        public const string EndOfEntry = "^";
+        public const char StatementBalance = '$';
     }
 }

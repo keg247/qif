@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
-using QifApi.Transactions;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using QifApi.Logic;
-using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using QifApi.Parsers;
+using QifApi.Transactions;
+using QifApi.Transactions.Fields;
+using QifApi.Writers;
 
 namespace QifApi
 {
@@ -136,7 +139,7 @@ namespace QifApi
         /// Imports a stream in a QIF format and replaces the current instance properties with details found in the import stream.
         /// </summary>
         /// <param name="reader">The import reader stream.</param>
-        public void Import(StreamReader reader)
+        public void Import(TextReader reader)
         {
             QifDom import = ImportFile(reader);
 
@@ -179,16 +182,16 @@ namespace QifApi
             {
                 writer.AutoFlush = true;
 
-                AccountListLogic.Export(writer, qif.AccountListTransactions);
-                AssetLogic.Export(writer, qif.AssetTransactions);
-                BankLogic.Export(writer, qif.BankTransactions);
-                CashLogic.Export(writer, qif.CashTransactions);
-                CategoryListLogic.Export(writer, qif.CategoryListTransactions);
-                ClassListLogic.Export(writer, qif.ClassListTransactions);
-                CreditCardLogic.Export(writer, qif.CreditCardTransactions);
-                InvestmentLogic.Export(writer, qif.InvestmentTransactions);
-                LiabilityLogic.Export(writer, qif.LiabilityTransactions);
-                MemorizedTransactionListLogic.Export(writer, qif.MemorizedTransactionListTransactions);
+                AccountListWriter.Write(writer, qif.AccountListTransactions);
+                BasicTransactionWriter.Write(writer, Headers.Asset, qif.AssetTransactions);
+                BasicTransactionWriter.Write(writer, Headers.Bank, qif.BankTransactions);
+                BasicTransactionWriter.Write(writer, Headers.Cash, qif.CashTransactions);
+                BasicTransactionWriter.Write(writer, Headers.CreditCard, qif.CreditCardTransactions);
+                BasicTransactionWriter.Write(writer, Headers.Liability, qif.LiabilityTransactions);
+                CategoryListWriter.Write(writer, qif.CategoryListTransactions);
+                ClassListWriter.Write(writer, qif.ClassListTransactions);
+                InvestmentWriter.Write(writer, qif.InvestmentTransactions);
+                MemorizedTransactionListWriter.Write(writer, qif.MemorizedTransactionListTransactions);
             }
         }
 
@@ -199,7 +202,7 @@ namespace QifApi
         /// <returns>A QifDom object of transactions imported.</returns>
         public static QifDom ImportFile(string fileName)
         {
-            QifDom result = null;
+            QifDom result;
 
             // If the file doesn't exist
             if (File.Exists(fileName) == false)
@@ -222,156 +225,61 @@ namespace QifApi
         /// </summary>
         /// <param name="reader">The stream reader pointing to an underlying QIF file to import.</param>
         /// <returns>A QifDom object of transactions imported.</returns>
-        public static QifDom ImportFile(StreamReader reader)
+        public static QifDom ImportFile(TextReader reader)
         {
             QifDom result = new QifDom();
 
-            // Read the entire file
-            string input = reader.ReadToEnd();
-
-            // Split the file by header types
-            string[] transactionTypes = Regex.Split(input, @"^(!.*)$", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
-
-            // Loop through the transaction types
-            for (int i = 0; i < transactionTypes.Length; i++)
+            string line;
+            IParser parser = null;
+            while ((line = reader.ReadLine()) != null)
             {
-                // Get the exact transaction type
-                string transactionType = transactionTypes[i].Replace("\r", "").Replace("\n", "").Trim();
-
-                // If the string has a value
-                if (transactionType.Length > 0)
+                switch (line[0])
                 {
-                    // Check the transaction type
-                    switch (transactionType)
-                    {
-                        case Headers.Bank:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string bankItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.BankTransactions.AddRange(BankLogic.Import(bankItems));
-
-                            // All done
-                            break;
-                        case Headers.AccountList:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string accountListItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.AccountListTransactions.AddRange(AccountListLogic.Import(accountListItems));
-
-                            // All done
-                            break;
-                        case Headers.Asset:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string assetItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.AssetTransactions.AddRange(AssetLogic.Import(assetItems));
-
-                            // All done
-                            break;
-                        case Headers.Cash:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string cashItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.CashTransactions.AddRange(CashLogic.Import(cashItems));
-
-                            // All done
-                            break;
-                        case Headers.CategoryList:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string catItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.CategoryListTransactions.AddRange(CategoryListLogic.Import(catItems));
-
-                            // All done
-                            break;
-                        case Headers.ClassList:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string classItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.ClassListTransactions.AddRange(ClassListLogic.Import(classItems));
-
-                            // All done
-                            break;
-                        case Headers.CreditCard:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string ccItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.CreditCardTransactions.AddRange(CreditCardLogic.Import(ccItems));
-
-                            // All done
-                            break;
-                        case Headers.Investment:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string investItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.InvestmentTransactions.AddRange(InvestmentLogic.Import(investItems));
-
-                            // All done
-                            break;
-                        case Headers.Liability:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string liabilityItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.LiabilityTransactions.AddRange(LiabilityLogic.Import(liabilityItems));
-
-                            // All done
-                            break;
-                        case Headers.MemorizedTransactionList:
-                            // Increment the array counter
-                            i++;
-
-                            // Extract the transaction items
-                            string memItems = transactionTypes[i];
-
-                            // Import all transaction types
-                            result.MemorizedTransactionListTransactions.AddRange(MemorizedTransactionListLogic.Import(memItems));
-
-                            // All done
-                            break;
-                        default:
-                            // Don't do any processing
-                            break;
-                    }
+                    case InformationFields.TransactionType:
+                        parser = CreateParser(line);
+                        break;
+                    case InformationFields.EndOfEntry:
+                        Debug.Assert(parser != null, "parser != null");
+                        parser.Yield(result);
+                        break;
+                    default:
+                        Debug.Assert(parser != null, "parser != null");
+                        parser.ParseLine(line);
+                        break;
                 }
             }
 
             return result;
+        }
+
+        private static IParser CreateParser(string line)
+        {
+            switch (line)
+            {
+                case Headers.Bank  :
+                    return new BankParser();
+                case Headers.Cash:
+                    return new CashParser();
+                case Headers.CreditCard:
+                    return new CreditCardParser();
+                case Headers.Investment:
+                    return new InvestmentParser();
+                case Headers.Asset:
+                    return new AssetParser();
+                case Headers.Liability:
+                    return new LiabilityParser();
+                case Headers.AccountList:
+                    return new AccountListParser();
+                case Headers.CategoryList:
+                    return new CategoryListParser();
+                case Headers.ClassList:
+                    return new ClassListParser();
+                case Headers.MemorizedTransactionList:
+                    return new MemorizedTransactionListParser();
+
+                default:
+                    throw new NotSupportedException("The transaction type '" + line + "' is not supported");
+            }
         }
     }
 }

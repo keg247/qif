@@ -7,7 +7,7 @@ namespace QifApi
     {
         internal static bool GetBoolean(string value)
         {
-            bool result = false;
+            bool result;
 
             if ((bool.TryParse(value, out result) == false) && (value.Length > 0))
             {
@@ -18,36 +18,27 @@ namespace QifApi
 
         }
 
-        private static string GetRealDateString(string qifDateString)
+        private static string GetRealDateString(string value)
         {
-            // Find the apostraphe
-            int i = qifDateString.IndexOf("'", StringComparison.Ordinal);
+            // Find the apostrophe
+            int i = value.IndexOf("'", StringComparison.Ordinal);
 
-            // Prepare the return string
-            string sRet = "";
-
-            // If the apostraphe is present
+            // If the apostrophe is present
             if (i != -1)
             {
-                // Extract everything but the apostraphe
-                sRet = qifDateString.Substring(0, i) + "/" + qifDateString.Substring(i + 1);
+                // Extract everything but the apostrophe
+                var sRet = value.Substring(0, i) + "/" + value.Substring(i + 1);
 
-                // Replace spaces with zeros
-                sRet = sRet.Replace(" ", "0");
+                return sRet.Replace(" ", "0");
+            }
 
-                // Return the new string
-                return sRet;
-            }
-            else
-            {
-                // Otherwise, just return the raw value
-                return qifDateString;
-            }
+            // Otherwise, just return the raw value
+            return value;
         }
 
         internal static decimal GetDecimal(string value)
         {
-            decimal result = 0;
+            decimal result;
 
             if (decimal.TryParse(value, out result) == false)
             {
@@ -60,10 +51,11 @@ namespace QifApi
         internal static DateTime GetDateTime(string value)
         {
             // Prepare the return value
-            DateTime result = new DateTime();
+            DateTime result;
 
             // If parsing the date string fails
-            if (DateTime.TryParse(GetRealDateString(value), CultureInfo.CurrentCulture, DateTimeStyles.None, out result) == false)
+            var realDateString = GetRealDateString(value);
+            if (DateTime.TryParse(realDateString, CultureInfo.CurrentCulture, DateTimeStyles.None, out result) == false)
             {
                 // Identify that the value couldn't be formatted
                 throw new InvalidCastException(Resources.InvalidDateFormat);

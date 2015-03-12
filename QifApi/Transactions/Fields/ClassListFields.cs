@@ -9,14 +9,10 @@ namespace QifApi.Transactions.Fields
         /// <summary>
         /// Class name
         /// </summary>
-        public const string ClassName = "N";
+        public const char ClassName = 'N';
         /// <summary>
         /// Description
         /// </summary>
-        public const string Description = "D";
-        /// <summary>
-        /// End of entry
-        /// </summary>
-        public const string EndOfEntry = "^";
+        public const char Description = 'D';
     }
 }

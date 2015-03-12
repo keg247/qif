@@ -9,54 +9,50 @@ namespace QifApi.Transactions.Fields
         /// <summary>
         /// Date
         /// </summary>
-        public const string Date = "D";
+        public const char Date = 'D';
         /// <summary>
         /// Action
         /// </summary>
-        public const string Action = "N";
+        public const char Action = 'N';
         /// <summary>
         /// Security
         /// </summary>
-        public const string Security = "Y";
+        public const char Security = 'Y';
         /// <summary>
         /// Price
         /// </summary>
-        public const string Price = "I";
+        public const char Price = 'I';
         /// <summary>
         /// Number of shares or split ratio
         /// </summary>
-        public const string Quantity = "Q";
+        public const char Quantity = 'Q';
         /// <summary>
         /// Transaction amount
         /// </summary>
-        public const string TransactionAmount = "T";
+        public const char TransactionAmount = 'T';
         /// <summary>
         /// Cleared status
         /// </summary>
-        public const string ClearedStatus = "C";
+        public const char ClearedStatus = 'C';
         /// <summary>
         /// Text in the first line for transfers and reminders
         /// </summary>
-        public const string TextFirstLine = "P";
+        public const char TextFirstLine = 'P';
         /// <summary>
         /// Memo
         /// </summary>
-        public const string Memo = "M";
+        public const char Memo = 'M';
         /// <summary>
         /// Commission
         /// </summary>
-        public const string Commission = "O";
+        public const char Commission = 'O';
         /// <summary>
         /// Account for the transfer
         /// </summary>
-        public const string AccountForTransfer = "L";
+        public const char AccountForTransfer = 'L';
         /// <summary>
         /// Amount transferred
         /// </summary>
-        public const string AmountTransferred = "$";
-        /// <summary>
-        /// End of entry
-        /// </summary>
-        public const string EndOfEntry = "^";
+        public const char AmountTransferred = '$';
     }
 }

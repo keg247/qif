@@ -79,16 +79,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="Logic\AccountListLogic.cs" />
-    <Compile Include="Logic\AssetLogic.cs" />
-    <Compile Include="Logic\BankLogic.cs" />
-    <Compile Include="Logic\CashLogic.cs" />
-    <Compile Include="Logic\CategoryListLogic.cs" />
-    <Compile Include="Logic\ClassListLogic.cs" />
-    <Compile Include="Logic\CreditCardLogic.cs" />
-    <Compile Include="Logic\InvestmentLogic.cs" />
-    <Compile Include="Logic\LiabilityLogic.cs" />
-    <Compile Include="Logic\MemorizedTransactionListLogic.cs" />
+    <Compile Include="Parsers\BasicTransactionParser.cs" />
+    <Compile Include="Transactions\Fields\InformationFields.cs" />
+    <Compile Include="Writers\AccountListWriter.cs" />
+    <Compile Include="Parsers\AccountListParser.cs" />
+    <Compile Include="Parsers\AssetParser.cs" />
+    <Compile Include="Writers\BasicTransactionWriter.cs" />
+    <Compile Include="Parsers\BankParser.cs" />
+    <Compile Include="Parsers\CashParser.cs" />
+    <Compile Include="Writers\CategoryListWriter.cs" />
+    <Compile Include="Parsers\CategoryListParser.cs" />
+    <Compile Include="Writers\ClassListWriter.cs" />
+    <Compile Include="Parsers\ClassListParser.cs" />
+    <Compile Include="Parsers\CreditCardParser.cs" />
+    <Compile Include="Writers\InvestmentWriter.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="Parsers\InvestmentParser.cs" />
+    <Compile Include="Parsers\LiabilityParser.cs" />
+    <Compile Include="Parsers\MemorizedTransactionListParser.cs" />
+    <Compile Include="Writers\MemorizedTransactionListWriter.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QifDom.cs" />
@@ -106,6 +115,7 @@
     <Compile Include="Transactions\Fields\ClassListFields.cs" />
     <Compile Include="Transactions\Fields\InvestmentAccountFields.cs" />
     <Compile Include="Transactions\Fields\MemorizedTransactionListFields.cs" />
+    <Compile Include="Transactions\Fields\MemorizedTransactionListTransactionTypes.cs" />
     <Compile Include="Transactions\Fields\NonInvestmentAccountFields.cs" />
     <Compile Include="Transactions\Headers.cs" />
     <Compile Include="Transactions\InvalidTransactionException.cs" />

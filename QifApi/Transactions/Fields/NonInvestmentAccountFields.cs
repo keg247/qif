@@ -9,50 +9,46 @@ namespace QifApi.Transactions.Fields
         /// <summary>
         /// Date
         /// </summary>
-        public const string Date = "D";
+        public const char Date = 'D';
         /// <summary>
         /// Amount
         /// </summary>
-        public const string Amount = "T";
+        public const char Amount = 'T';
         /// <summary>
         /// Cleared status
         /// </summary>
-        public const string ClearedStatus = "C";
+        public const char ClearedStatus = 'C';
         /// <summary>
         /// Check, reference number, or transaction type
         /// </summary>
-        public const string Number = "N";
+        public const char Number = 'N';
         /// <summary>
         /// Payee
         /// </summary>
-        public const string Payee = "P";
+        public const char Payee = 'P';
         /// <summary>
         /// Memo
         /// </summary>
-        public const string Memo = "M";
+        public const char Memo = 'M';
         /// <summary>
         /// Up to five lines; the sixth line is an optional message
         /// </summary>
-        public const string Address = "A";
+        public const char Address = 'A';
         /// <summary>
         /// Category/Subcategory/Transfer/Class
         /// </summary>
-        public const string Category = "L";
+        public const char Category = 'L';
         /// <summary>
         /// Category/Transfer/Class
         /// </summary>
-        public const string SplitCategory = "S";
+        public const char SplitCategory = 'S';
         /// <summary>
         /// Memo in split
         /// </summary>
-        public const string SplitMemo = "E";
+        public const char SplitMemo = 'E';
         /// <summary>
         /// Dollar amount of split
         /// </summary>
-        public const string SplitAmount = "$";
-        /// <summary>
-        /// End of entry
-        /// </summary>
-        public const string EndOfEntry = "^";
+        public const char SplitAmount = '$';
     }
 }
