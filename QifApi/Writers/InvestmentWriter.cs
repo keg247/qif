@@ -41,7 +41,7 @@ namespace QifApi.Writers
                     writer.WriteLine(item.Commission.ToString(CultureInfo.CurrentCulture));
 
                     writer.Write(InvestmentAccountFields.Date);
-                    writer.WriteLine(item.Date.ToShortDateString());
+                    writer.WriteLine(item.Date.ToString("d"));
 
                     if (!string.IsNullOrEmpty(item.Memo))
                     {

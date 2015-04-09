@@ -7,9 +7,9 @@ namespace QifApi.Parsers
     {
         private AccountListTransaction item = new AccountListTransaction();
 
-        public void Yield(QifDom dom)
+        public void Yield(QifDocument document)
         {
-            dom.AccountListTransactions.Add(item);
+            document.AccountListTransactions.Add(item);
             item = new AccountListTransaction();
         }
 

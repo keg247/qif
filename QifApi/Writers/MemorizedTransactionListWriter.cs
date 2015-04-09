@@ -16,17 +16,17 @@ namespace QifApi.Writers
 
                 foreach (MemorizedTransactionListTransaction item in list)
                 {
-                    foreach (int i in item.Address.Keys)
+                    foreach (string address in item.Address)
                     {
                         writer.Write(MemorizedTransactionListFields.Address);
-                        writer.WriteLine(item.Address[i]);
+                        writer.WriteLine(address);
                     }
 
                     writer.Write(MemorizedTransactionListFields.AmortizationCurrentLoanBalance);
                     writer.WriteLine(item.AmortizationCurrentLoanBalance.ToString(CultureInfo.CurrentCulture));
 
                     writer.Write(MemorizedTransactionListFields.AmortizationFirstPaymentDate);
-                    writer.WriteLine(item.AmortizationFirstPaymentDate.ToShortDateString());
+                    writer.WriteLine(item.AmortizationFirstPaymentDate.ToString("d"));
 
                     writer.Write(MemorizedTransactionListFields.AmortizationInterestRate);
                     writer.WriteLine(item.AmortizationInterestRate.ToString(CultureInfo.CurrentCulture));

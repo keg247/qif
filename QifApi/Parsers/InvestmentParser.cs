@@ -7,9 +7,9 @@ namespace QifApi.Parsers
     {
         private InvestmentTransaction item = new InvestmentTransaction();
 
-        public void Yield(QifDom dom)
+        public void Yield(QifDocument document)
         {
-            dom.InvestmentTransactions.Add(item); 
+            document.InvestmentTransactions.Add(item); 
             item = new InvestmentTransaction();
         }
 

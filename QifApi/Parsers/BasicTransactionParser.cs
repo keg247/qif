@@ -7,7 +7,7 @@ namespace QifApi.Parsers
     {
         protected BasicTransaction Item = new BasicTransaction();
 
-        public abstract void Yield(QifDom dom);
+        public abstract void Yield(QifDocument document);
 
         public virtual void ParseLine(string line)
         {
@@ -36,7 +36,7 @@ namespace QifApi.Parsers
                     Item.Category = value;
                     break;
                 case NonInvestmentAccountFields.Address:
-                    Item.Address.Add(Item.Address.Count, value);
+                    Item.Address.Add(value);
                     break;
                 case NonInvestmentAccountFields.SplitCategory:
                     Item.SplitCategories.Add(Item.SplitCategories.Count, value);

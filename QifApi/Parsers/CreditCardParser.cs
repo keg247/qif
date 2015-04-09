@@ -4,9 +4,9 @@ namespace QifApi.Parsers
 {
     internal class CreditCardParser : BasicTransactionParser
     {
-        public override void Yield(QifDom dom)
+        public override void Yield(QifDocument document)
         {
-            dom.CreditCardTransactions.Add(Item); 
+            document.CreditCardTransactions.Add(Item); 
             Item = new BasicTransaction();
         }
     }

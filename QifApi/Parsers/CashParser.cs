@@ -4,9 +4,9 @@ namespace QifApi.Parsers
 {
     internal class CashParser : BasicTransactionParser
     {
-        public override void Yield(QifDom dom)
+        public override void Yield(QifDocument document)
         {
-            dom.CashTransactions.Add(Item);
+            document.CashTransactions.Add(Item);
             Item = new BasicTransaction();
         }
     }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using QifApi.Parsers;
 using QifApi.Transactions;
 using QifApi.Transactions.Fields;
@@ -13,8 +12,7 @@ namespace QifApi
     /// <summary>
     /// Represents a Document Object Model for a QIF file.
     /// </summary>
-    [ClassInterface(ClassInterfaceType.None)]
-    public class QifDom
+    public class QifDocument
     {
         /// <summary>
         /// Represents a collection of bank transactions.
@@ -109,7 +107,7 @@ namespace QifApi
         /// <summary>
         /// Creates a new QIF DOM.
         /// </summary>
-        public QifDom()
+        public QifDocument()
         {
             BankTransactions = new List<BasicTransaction>();
             CashTransactions = new List<BasicTransaction>();
@@ -124,110 +122,81 @@ namespace QifApi
         }
 
         /// <summary>
-        /// Imports the specified file and replaces the current instance properties with details found in the import file.
+        /// Saves the QIF document to the <see cref="Stream"/>.
         /// </summary>
-        /// <param name="fileName">Name of the file to import.</param>
-        public void Import(string fileName)
+        public void Save(Stream stream)
         {
-            using (StreamReader reader = new StreamReader(fileName))
+            using (var writer = new StreamWriter(stream))
             {
-                Import(reader);
+                Save(writer);
             }
         }
 
         /// <summary>
-        /// Imports a stream in a QIF format and replaces the current instance properties with details found in the import stream.
+        /// Exports the QIF document to the <see cref="TextWriter"/>.
         /// </summary>
-        /// <param name="reader">The import reader stream.</param>
-        public void Import(TextReader reader)
+        public void Save(TextWriter writer)
         {
-            QifDom import = ImportFile(reader);
-
-            this.AccountListTransactions = import.AccountListTransactions;
-            this.AssetTransactions = import.AssetTransactions;
-            this.BankTransactions = import.BankTransactions;
-            this.CashTransactions = import.CashTransactions;
-            this.CategoryListTransactions = import.CategoryListTransactions;
-            this.ClassListTransactions = import.ClassListTransactions;
-            this.CreditCardTransactions = import.CreditCardTransactions;
-            this.InvestmentTransactions = import.InvestmentTransactions;
-            this.LiabilityTransactions = import.LiabilityTransactions;
-            this.MemorizedTransactionListTransactions = import.MemorizedTransactionListTransactions;
+            AccountListWriter.Write(writer, AccountListTransactions);
+            BasicTransactionWriter.Write(writer, Headers.Asset, AssetTransactions);
+            BasicTransactionWriter.Write(writer, Headers.Bank, BankTransactions);
+            BasicTransactionWriter.Write(writer, Headers.Cash, CashTransactions);
+            BasicTransactionWriter.Write(writer, Headers.CreditCard, CreditCardTransactions);
+            BasicTransactionWriter.Write(writer, Headers.Liability, LiabilityTransactions);
+            CategoryListWriter.Write(writer, CategoryListTransactions);
+            ClassListWriter.Write(writer, ClassListTransactions);
+            InvestmentWriter.Write(writer, InvestmentTransactions);
+            MemorizedTransactionListWriter.Write(writer, MemorizedTransactionListTransactions);
         }
 
-        /// <summary>
-        /// Exports the current instance properties to the specified file.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <remarks>This will overwrite an existing file.</remarks>
-        public void Export(string fileName)
-        {
-            ExportFile(this, fileName);
-        }
 
         /// <summary>
-        /// Exports the specified instance properties to the specified file.
+        /// Returns a string representation of the QIF document.
         /// </summary>
-        /// <param name="qif">The <seealso cref="T:QifDom"/> to export.</param>
-        /// <param name="fileName">Name of the file.</param>
-        /// <remarks>This will overwrite an existing file.</remarks>
-        public static void ExportFile(QifDom qif, string fileName)
+        /// <returns></returns>
+        public override string ToString()
         {
-            if (File.Exists(fileName))
+            using (var writer = new StringWriter())
             {
-                File.SetAttributes(fileName, FileAttributes.Normal);
-            }
-
-            using (StreamWriter writer = new StreamWriter(fileName))
-            {
-                writer.AutoFlush = true;
-
-                AccountListWriter.Write(writer, qif.AccountListTransactions);
-                BasicTransactionWriter.Write(writer, Headers.Asset, qif.AssetTransactions);
-                BasicTransactionWriter.Write(writer, Headers.Bank, qif.BankTransactions);
-                BasicTransactionWriter.Write(writer, Headers.Cash, qif.CashTransactions);
-                BasicTransactionWriter.Write(writer, Headers.CreditCard, qif.CreditCardTransactions);
-                BasicTransactionWriter.Write(writer, Headers.Liability, qif.LiabilityTransactions);
-                CategoryListWriter.Write(writer, qif.CategoryListTransactions);
-                ClassListWriter.Write(writer, qif.ClassListTransactions);
-                InvestmentWriter.Write(writer, qif.InvestmentTransactions);
-                MemorizedTransactionListWriter.Write(writer, qif.MemorizedTransactionListTransactions);
+                Save(writer);
+                return writer.ToString();
             }
         }
 
         /// <summary>
-        /// Imports a QIF file and returns a QifDom object.
+        /// Parses a QIF document from the specified <see cref="String"/>.
         /// </summary>
-        /// <param name="fileName">The QIF file to import.</param>
-        /// <returns>A QifDom object of transactions imported.</returns>
-        public static QifDom ImportFile(string fileName)
+        /// <param name="text">The text representation of QIF file to parse.</param>
+        /// <returns>A QifDocument object of transactions imported.</returns>
+        public static QifDocument Parse(string text)
         {
-            QifDom result;
-
-            // If the file doesn't exist
-            if (File.Exists(fileName) == false)
+            using (var reader = new StringReader(text))
             {
-                // Identify the file doesn't exist
-                throw new FileNotFoundException();
+                return Load(reader);
             }
-
-            // Open the file
-            using (StreamReader sr = new StreamReader(fileName))
-            {
-                result = ImportFile(sr);
-            }
-
-            return result;
         }
 
         /// <summary>
-        /// Imports a QIF file stream reader and returns a QifDom object.
+        /// Loads a QIF document from the specified <see cref="Stream"/>
         /// </summary>
-        /// <param name="reader">The stream reader pointing to an underlying QIF file to import.</param>
-        /// <returns>A QifDom object of transactions imported.</returns>
-        public static QifDom ImportFile(TextReader reader)
+        /// <param name="reader">The text reader pointing to an underlying QIF file to import.</param>
+        /// <returns>A QifDocument object of transactions imported.</returns>
+        public static QifDocument Load(Stream stream)
         {
-            QifDom result = new QifDom();
+            using (var reader = new StreamReader(stream))
+            {
+                return Load(reader);
+            }
+        }
+
+        /// <summary>
+        /// Loads a QIF document from the specified <see cref="TextReader"/>
+        /// </summary>
+        /// <param name="reader">The text reader pointing to an underlying QIF file to import.</param>
+        /// <returns>A QifDocument object of transactions imported.</returns>
+        public static QifDocument Load(TextReader reader)
+        {
+            QifDocument result = new QifDocument();
 
             string line;
             IParser parser = null;

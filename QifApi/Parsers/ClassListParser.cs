@@ -7,9 +7,9 @@ namespace QifApi.Parsers
     {
         private ClassListTransaction item = new ClassListTransaction();
 
-        public void Yield(QifDom dom)
+        public void Yield(QifDocument document)
         {
-            dom.ClassListTransactions.Add(item);
+            document.ClassListTransactions.Add(item);
             item = new ClassListTransaction();
         }
 

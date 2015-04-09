@@ -7,9 +7,9 @@ namespace QifApi.Parsers
     {
         private CategoryListTransaction item = new CategoryListTransaction();
 
-        public void Yield(QifDom dom)
+        public void Yield(QifDocument document)
         {
-            dom.CategoryListTransactions.Add(item);
+            document.CategoryListTransactions.Add(item);
             item = new CategoryListTransaction();
         }
 

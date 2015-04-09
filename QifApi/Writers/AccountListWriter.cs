@@ -41,7 +41,7 @@ namespace QifApi.Writers
                     writer.WriteLine(item.StatementBalance.ToString(CultureInfo.CurrentCulture));
 
                     writer.Write(AccountInformationFields.StatementBalanceDate);
-                    writer.WriteLine(item.StatementBalanceDate.ToShortDateString());
+                    writer.WriteLine(item.StatementBalanceDate.ToString("d"));
 
                     writer.WriteLine(InformationFields.EndOfEntry);
                 }

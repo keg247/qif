@@ -17,12 +17,12 @@ namespace QifApi.Writers
                 foreach (var item in list)
                 {
                     writer.Write(NonInvestmentAccountFields.Date);
-                    writer.WriteLine(item.Date.ToShortDateString());
+                    writer.WriteLine(item.Date.ToString("d"));
 
-                    foreach (int i in item.Address.Keys)
+                    foreach (string address in item.Address)
                     {
                         writer.Write(NonInvestmentAccountFields.Address);
-                        writer.WriteLine(item.Address[i]);
+                        writer.WriteLine(address);
                     }
 
                     writer.Write(NonInvestmentAccountFields.Amount);

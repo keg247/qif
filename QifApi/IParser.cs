@@ -2,7 +2,7 @@ namespace QifApi
 {
     internal interface IParser
     {
-        void Yield(QifDom dom);
+        void Yield(QifDocument document);
         void ParseLine(string line);
     }
 }

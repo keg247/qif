@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using QifApi;
 using System.IO;
+using System.Xml.Linq;
 
 namespace QifApiTest
 {
@@ -10,7 +11,11 @@ namespace QifApiTest
         public MainUI()
         {
             InitializeComponent();
-            qifDomPropertyGrid.SelectedObject = QifDom.ImportFile(Path.GetDirectoryName(Application.ExecutablePath) + "\\sample.qif");
+            var fileName = Path.GetDirectoryName(Application.ExecutablePath) + "\\sample.qif";
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                qifDomPropertyGrid.SelectedObject = QifDocument.Load(sr);
+            }
         }
 
         private void newButton_Click(object sender, EventArgs e)
@@ -23,14 +28,21 @@ namespace QifApiTest
 
         private void InitializeQifDom()
         {
-            qifDomPropertyGrid.SelectedObject = new QifDom();
+            qifDomPropertyGrid.SelectedObject = new QifDocument();
         }
 
         private void exportButton_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                QifDom.ExportFile((QifDom)qifDomPropertyGrid.SelectedObject, saveFileDialog.FileName);
+                QifDocument qif = (QifDocument)qifDomPropertyGrid.SelectedObject;
+                string fileName = saveFileDialog.FileName;
+                using (StreamWriter writer = new StreamWriter(fileName))
+                {
+                    writer.AutoFlush = true;
+
+                    qif.Save(writer);
+                }
                 MessageBox.Show(this, "The export is complete.", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -41,7 +53,11 @@ namespace QifApiTest
             {
                 if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    qifDomPropertyGrid.SelectedObject = QifDom.ImportFile(openFileDialog.FileName);
+                    string fileName = openFileDialog.FileName;
+                    using (StreamReader sr = new StreamReader(fileName))
+                    {
+                        qifDomPropertyGrid.SelectedObject = QifDocument.Load(sr);
+                    }
                 }
             }
         }
@@ -52,7 +68,7 @@ namespace QifApiTest
 
             if (qifDomPropertyGrid.SelectedObject != null)
             {
-                result = MessageBox.Show(this, "Do you want to overwrite the existing QifDom?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes;
+                result = MessageBox.Show(this, "Do you want to overwrite the existing QifDocument?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes;
             }
             else
             {

@@ -83,7 +83,7 @@ namespace QifApi.Transactions
         /// Gets or sets the address.
         /// </summary>
         /// <value>The address.</value>
-        public SortedList<int, string> Address
+        public IList<string> Address
         {
             get;
             set;
@@ -93,7 +93,7 @@ namespace QifApi.Transactions
         /// Gets or sets the split categories.
         /// </summary>
         /// <value>The split categories.</value>
-        public SortedList<int, string> SplitCategories
+        public IDictionary<int, string> SplitCategories
         {
             get;
             set;
@@ -103,7 +103,7 @@ namespace QifApi.Transactions
         /// Gets or sets the split memos.
         /// </summary>
         /// <value>The split memos.</value>
-        public SortedList<int, string> SplitMemos
+        public IDictionary<int, string> SplitMemos
         {
             get;
             set;
@@ -113,7 +113,7 @@ namespace QifApi.Transactions
         /// Gets or sets the split amounts.
         /// </summary>
         /// <value>The split amounts.</value>
-        public SortedList<int, decimal> SplitAmounts
+        public IDictionary<int, decimal> SplitAmounts
         {
             get;
             set;
@@ -129,10 +129,10 @@ namespace QifApi.Transactions
             Payee = "";
             Memo = "";
             Category = "";
-            Address = new SortedList<int, string>();
-            SplitCategories = new SortedList<int, string>();
-            SplitMemos = new SortedList<int, string>();
-            SplitAmounts = new SortedList<int, decimal>();
+            Address = new List<string>();
+            SplitCategories = new Dictionary<int, string>();
+            SplitMemos = new Dictionary<int, string>();
+            SplitAmounts = new Dictionary<int, decimal>();
         }
 
         /// <summary>

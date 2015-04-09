@@ -7,7 +7,6 @@ namespace QifApi.Transactions
     /// <summary>
     /// Used to describe an invalid transaction.
     /// </summary>
-    [Serializable]
     public class InvalidTransactionException : Exception
     {
         /// <summary>
@@ -35,26 +34,6 @@ namespace QifApi.Transactions
         public InvalidTransactionException(string message, Exception innerException)
             : this(message, innerException, null)
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the System.Exception class with serialized data.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The <see cref="StreamingContext"/> that contains contextual information about the source or destination.</param>
-        protected InvalidTransactionException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-            if (info != null)
-            {
-                foreach (var member in info)
-                {
-                    if (member.Name == "Transaction")
-                    {
-                        Transaction = member.Value as TransactionBase;
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -86,13 +65,6 @@ namespace QifApi.Transactions
             : base(message, innerException)
         {
             Transaction = transaction;
-        }
-
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            base.GetObjectData(info, context);
-
-            info.AddValue("Transaction", Transaction);
         }
 
         /// <summary>

@@ -7,9 +7,9 @@ namespace QifApi.Parsers
     {
         private MemorizedTransactionListTransaction item = new MemorizedTransactionListTransaction();
 
-        public void Yield(QifDom dom)
+        public void Yield(QifDocument document)
         {
-            dom.MemorizedTransactionListTransactions.Add(item);
+            document.MemorizedTransactionListTransactions.Add(item);
             item = new MemorizedTransactionListTransaction();
         }
 
@@ -19,7 +19,7 @@ namespace QifApi.Parsers
             switch (line[0])
             {
                 case MemorizedTransactionListFields.Address:
-                    item.Address.Add(item.Address.Count, value);
+                    item.Address.Add(value);
                     break;
                 case MemorizedTransactionListFields.AmortizationCurrentLoanBalance:
                     item.AmortizationCurrentLoanBalance = Common.GetDecimal(value);
