@@ -16,5 +16,7 @@ qif.Save(File.OpenWrite(@"c:\quicken.qif"));
 
 All transactions present in the DOM are written according to the QIF file format specification. Dates and numbers should be written according to globalization standards.
 
-# NuGet
-Releases are published on NuGet: [http://www.nuget.org/packages/hazzik.qif](http://www.nuget.org/packages/hazzik.qif) after every successful build on AppVeyor. Build Status: [![Build status](https://ci.appveyor.com/api/projects/status/0o4gh25e8ggnibqr/branch/master?svg=true)](https://ci.appveyor.com/project/hazzik/qif/branch/master)
+# Available on [NuGet](http://www.nuget.org/packages/hazzik.qif)
+```PowerShell
+Install-Package Hazzik.Qif
+```
