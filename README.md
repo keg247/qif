@@ -5,12 +5,12 @@ This library enables you to import or export "*.qif files. It also allows you to
 
 # C# / .NET Example
 ```csharp
-// This returns a QifDocument object (defined in the QifImport namespace). The QifDom represents all transactions found in the QIF file.
+// This returns a QifDocument object. The QifDocument represents all transactions found in the QIF file.
 QifDocument qif = QifDocument.Load(File.OpenRead(@"c:\quicken.qif"));
 
 ... /* create or modify transactions */ ...
 
-// This writes the QifDom to a file.
+// This writes the QifDocument to a file.
 qif.Save(File.OpenWrite(@"c:\quicken.qif"));
 ```
 
