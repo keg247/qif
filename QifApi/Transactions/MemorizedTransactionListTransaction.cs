@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace QifApi.Transactions
+namespace Hazzik.Qif.Transactions
 {
     /// <summary>
     /// A memorized transaction list transaction. It is used to describe a basic transaction that is memorized.

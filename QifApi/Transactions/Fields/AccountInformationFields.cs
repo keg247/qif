@@ -1,5 +1,5 @@
 ﻿
-namespace QifApi.Transactions.Fields
+namespace Hazzik.Qif.Transactions.Fields
 {
     /// <summary>
     /// The account information fields used in transactions.

@@ -1,7 +1,7 @@
-﻿using QifApi.Transactions;
-using QifApi.Transactions.Fields;
+﻿using Hazzik.Qif.Transactions;
+using Hazzik.Qif.Transactions.Fields;
 
-namespace QifApi.Parsers
+namespace Hazzik.Qif.Parsers
 {
     internal class CategoryListParser : IParser
     {

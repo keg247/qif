@@ -1,6 +1,6 @@
-using QifApi.Transactions;
+using Hazzik.Qif.Transactions;
 
-namespace QifApi.Parsers
+namespace Hazzik.Qif.Parsers
 {
     internal class CreditCardParser : BasicTransactionParser
     {

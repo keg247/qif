@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace QifApi.Transactions
+﻿namespace Hazzik.Qif.Transactions
 {
     /// <summary>
     /// The base transaction from which all transactions must derive.

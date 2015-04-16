@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using QifApi;
 using System.IO;
 using System.Xml.Linq;
+using Hazzik.Qif;
 
 namespace QifApiTest
 {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Resources;
-using System.Runtime.InteropServices;
 
 [assembly: CLSCompliant(true)]
 
@@ -13,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("https://github.com/hazzik/qif")]
 [assembly: AssemblyProduct("QifApi")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright © Shane Walters 2015; Alexander Zaytsev 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -27,4 +25,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]

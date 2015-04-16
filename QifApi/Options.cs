@@ -1,5 +1,5 @@
 ﻿
-namespace QifApi
+namespace Hazzik.Qif
 {
     internal static class Options
     {

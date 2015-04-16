@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace QifApi.Transactions
+namespace Hazzik.Qif.Transactions
 {
     /// <summary>
     /// An investment transaction.

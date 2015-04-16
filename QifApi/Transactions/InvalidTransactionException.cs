@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.Serialization;
 
-namespace QifApi.Transactions
+namespace Hazzik.Qif.Transactions
 {
     /// <summary>
     /// Used to describe an invalid transaction.

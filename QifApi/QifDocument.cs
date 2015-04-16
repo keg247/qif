@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using QifApi.Parsers;
-using QifApi.Transactions;
-using QifApi.Transactions.Fields;
-using QifApi.Writers;
+using Hazzik.Qif.Parsers;
+using Hazzik.Qif.Transactions;
+using Hazzik.Qif.Transactions.Fields;
+using Hazzik.Qif.Writers;
 
-namespace QifApi
+namespace Hazzik.Qif
 {
     /// <summary>
     /// Represents a Document Object Model for a QIF file.
@@ -179,7 +179,7 @@ namespace QifApi
         /// <summary>
         /// Loads a QIF document from the specified <see cref="Stream"/>
         /// </summary>
-        /// <param name="reader">The text reader pointing to an underlying QIF file to import.</param>
+        /// <param name="stream">The stream pointing to an underlying QIF file to load.</param>
         /// <returns>A QifDocument object of transactions imported.</returns>
         public static QifDocument Load(Stream stream)
         {
@@ -192,7 +192,7 @@ namespace QifApi
         /// <summary>
         /// Loads a QIF document from the specified <see cref="TextReader"/>
         /// </summary>
-        /// <param name="reader">The text reader pointing to an underlying QIF file to import.</param>
+        /// <param name="reader">The text reader pointing to an underlying QIF file to load.</param>
         /// <returns>A QifDocument object of transactions imported.</returns>
         public static QifDocument Load(TextReader reader)
         {

@@ -1,5 +1,5 @@
 ﻿
-namespace QifApi.Transactions
+namespace Hazzik.Qif.Transactions
 {
     /// <summary>
     /// A category list transaction.
