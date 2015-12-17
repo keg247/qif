@@ -1,7 +1,7 @@
 # qif
 A library for creating and consuming *.qif files. The library complies with documented Quicken Interchange Format (QIF) files specification. It is a completely managed, open source QIF API.
 
-This library enables you to import or export "*.qif files. It also allows you to create or modify transactions and represent them easily in code as entities. This library can enable your application to completely handle any aspect of a QIF file. You can create transactions in an easy to understand model and export it to the versatile Quicken export file format, or you can easily import your QIF file, and have immediate access to all transactions in the file.
+This library enables you to import or export *.qif files. It also allows you to create or modify transactions and represent them easily in code as entities. This library can enable your application to completely handle any aspect of a QIF file. You can create transactions in an easy to understand model and export it to the versatile Quicken export file format, or you can easily import your QIF file, and have immediate access to all transactions in the file.
 
 # C# / .NET Example
 ```csharp
