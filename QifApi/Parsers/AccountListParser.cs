@@ -3,7 +3,7 @@ using Hazzik.Qif.Transactions.Fields;
 
 namespace Hazzik.Qif.Parsers
 {
-    internal class AccountListParser : IParser
+    class AccountListParser : IParser
     {
         private AccountListTransaction item = new AccountListTransaction();
 

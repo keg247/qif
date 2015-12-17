@@ -12,134 +12,73 @@ namespace Hazzik.Qif.Transactions
         /// Gets or sets the date.
         /// </summary>
         /// <value>The date.</value>
-        public DateTime Date
-        {
-            get;
-            set;
-        }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or sets the action.
         /// </summary>
         /// <value>The action.</value>
-        public string Action
-        {
-            get;
-            set;
-        }
+        public string Action { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the security.
         /// </summary>
         /// <value>The security.</value>
-        public string Security
-        {
-            get;
-            set;
-        }
+        public string Security { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the price.
         /// </summary>
         /// <value>The price.</value>
-        public decimal Price
-        {
-            get;
-            set;
-        }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// Gets or sets the quantity.
         /// </summary>
         /// <value>The quantity.</value>
-        public decimal Quantity
-        {
-            get;
-            set;
-        }
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or sets the transaction amount.
         /// </summary>
         /// <value>The transaction amount.</value>
-        public decimal TransactionAmount
-        {
-            get;
-            set;
-        }
+        public decimal TransactionAmount { get; set; }
 
         /// <summary>
         /// Gets or sets the cleared status.
         /// </summary>
         /// <value>The cleared status.</value>
-        public string ClearedStatus
-        {
-            get;
-            set;
-        }
+        public string ClearedStatus { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the text first line.
         /// </summary>
         /// <value>The text first line.</value>
-        public string TextFirstLine
-        {
-            get;
-            set;
-        }
+        public string TextFirstLine { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the memo.
         /// </summary>
         /// <value>The memo.</value>
-        public string Memo
-        {
-            get;
-            set;
-        }
+        public string Memo { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the commission.
         /// </summary>
         /// <value>The commission.</value>
-        public decimal Commission
-        {
-            get;
-            set;
-        }
+        public decimal Commission { get; set; }
 
         /// <summary>
         /// Gets or sets the account for transfer.
         /// </summary>
         /// <value>The account for transfer.</value>
-        public string AccountForTransfer
-        {
-            get;
-            set;
-        }
+        public string AccountForTransfer { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the amount transferred.
         /// </summary>
         /// <value>The amount transferred.</value>
-        public decimal AmountTransferred
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvestmentTransaction"/> class.
-        /// </summary>
-        public InvestmentTransaction()
-        {
-            Action = "";
-            Security = "";
-            ClearedStatus = "";
-            TextFirstLine = "";
-            Memo = "";
-            AccountForTransfer = "";
-        }
+        public decimal AmountTransferred { get; set; }
 
         /// <summary>
         /// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
@@ -149,7 +88,7 @@ namespace Hazzik.Qif.Transactions
         /// </returns>
         public override string ToString()
         {
-            return string.Format(Resources.Culture, Resources.InvestmentTransactionDisplay, this.Date.ToString("d", CultureInfo.CurrentCulture), this.TextFirstLine, this.TransactionAmount.ToString("C2", CultureInfo.CurrentCulture));
+            return string.Format(Resources.Culture, Resources.InvestmentTransactionDisplay, Date.ToString("d", CultureInfo.CurrentCulture), TextFirstLine, TransactionAmount.ToString("C2", CultureInfo.CurrentCulture));
         }
     }
 }

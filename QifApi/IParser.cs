@@ -1,6 +1,6 @@
 namespace Hazzik.Qif
 {
-    internal interface IParser
+    interface IParser
     {
         void Yield(QifDocument document);
         void ParseLine(string line);

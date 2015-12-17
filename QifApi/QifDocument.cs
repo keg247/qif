@@ -17,109 +17,52 @@ namespace Hazzik.Qif
         /// <summary>
         /// Represents a collection of bank transactions.
         /// </summary>
-        public List<BasicTransaction> BankTransactions
-        {
-            get;
-            set;
-        }
+        public IList<BasicTransaction> BankTransactions { get; } = new List<BasicTransaction>();
 
         /// <summary>
         /// Represents a collection of cash transactions.
         /// </summary>
-        public List<BasicTransaction> CashTransactions
-        {
-            get;
-            set;
-        }
+        public IList<BasicTransaction> CashTransactions { get; } = new List<BasicTransaction>();
 
         /// <summary>
         /// Represents a collection of credit card transactions.
         /// </summary>
-        public List<BasicTransaction> CreditCardTransactions
-        {
-            get;
-            set;
-        }
+        public IList<BasicTransaction> CreditCardTransactions { get; } = new List<BasicTransaction>();
 
         /// <summary>
         /// Represents a collection of investment transactions.
         /// </summary>
-        public List<InvestmentTransaction> InvestmentTransactions
-        {
-            get;
-            set;
-        }
+        public IList<InvestmentTransaction> InvestmentTransactions { get; } = new List<InvestmentTransaction>();
 
         /// <summary>
         /// Represents a collection of asset transactions.
         /// </summary>
-        public List<BasicTransaction> AssetTransactions
-        {
-            get;
-            set;
-        }
+        public IList<BasicTransaction> AssetTransactions { get; } = new List<BasicTransaction>();
 
         /// <summary>
         /// Represents a collection of liability transactions.
         /// </summary>
-        public List<BasicTransaction> LiabilityTransactions
-        {
-            get;
-            set;
-        }
+        public IList<BasicTransaction> LiabilityTransactions { get; } = new List<BasicTransaction>();
 
         /// <summary>
         /// Represents a collection of account list transactions.
         /// </summary>
-        public List<AccountListTransaction> AccountListTransactions
-        {
-            get;
-            set;
-        }
+        public IList<AccountListTransaction> AccountListTransactions { get; } = new List<AccountListTransaction>();
 
         /// <summary>
         /// Represents a collection of category list transactions.
         /// </summary>
-        public List<CategoryListTransaction> CategoryListTransactions
-        {
-            get;
-            set;
-        }
+        public IList<CategoryListTransaction> CategoryListTransactions { get; } = new List<CategoryListTransaction>();
 
         /// <summary>
         /// Represents a collection of class list transactions.
         /// </summary>
-        public List<ClassListTransaction> ClassListTransactions
-        {
-            get;
-            set;
-        }
+        public IList<ClassListTransaction> ClassListTransactions { get; } = new List<ClassListTransaction>();
 
         /// <summary>
         /// Represents a collection of memorized transaction list transactions.
         /// </summary>
-        public List<MemorizedTransactionListTransaction> MemorizedTransactionListTransactions
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Creates a new QIF DOM.
-        /// </summary>
-        public QifDocument()
-        {
-            BankTransactions = new List<BasicTransaction>();
-            CashTransactions = new List<BasicTransaction>();
-            CreditCardTransactions = new List<BasicTransaction>();
-            InvestmentTransactions = new List<InvestmentTransaction>();
-            AssetTransactions = new List<BasicTransaction>();
-            LiabilityTransactions = new List<BasicTransaction>();
-            AccountListTransactions = new List<AccountListTransaction>();
-            CategoryListTransactions = new List<CategoryListTransaction>();
-            ClassListTransactions = new List<ClassListTransaction>();
-            MemorizedTransactionListTransactions = new List<MemorizedTransactionListTransaction>();
-        }
+        public IList<MemorizedTransactionListTransaction> MemorizedTransactionListTransactions { get; } = new List<MemorizedTransactionListTransaction>();
 
         /// <summary>
         /// Saves the QIF document to the <see cref="Stream"/>.
@@ -148,7 +91,6 @@ namespace Hazzik.Qif
             InvestmentWriter.Write(writer, InvestmentTransactions);
             MemorizedTransactionListWriter.Write(writer, MemorizedTransactionListTransactions);
         }
-
 
         /// <summary>
         /// Returns a string representation of the QIF document.
@@ -196,7 +138,7 @@ namespace Hazzik.Qif
         /// <returns>A QifDocument object of transactions imported.</returns>
         public static QifDocument Load(TextReader reader)
         {
-            QifDocument result = new QifDocument();
+            var result = new QifDocument();
 
             string line;
             IParser parser = null;

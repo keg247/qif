@@ -3,7 +3,7 @@ using Hazzik.Qif.Transactions.Fields;
 
 namespace Hazzik.Qif.Parsers
 {
-    internal abstract class BasicTransactionParser : IParser
+    abstract class BasicTransactionParser : IParser
     {
         protected BasicTransaction Item = new BasicTransaction();
 

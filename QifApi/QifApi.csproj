@@ -54,7 +54,6 @@
     <Compile Include="Parsers\LiabilityParser.cs" />
     <Compile Include="Parsers\MemorizedTransactionListParser.cs" />
     <Compile Include="Writers\MemorizedTransactionListWriter.cs" />
-    <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QifDocument.cs" />
     <Compile Include="Resources.Designer.cs">

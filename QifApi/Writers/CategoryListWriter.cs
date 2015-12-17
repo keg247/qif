@@ -6,7 +6,7 @@ using Hazzik.Qif.Transactions.Fields;
 
 namespace Hazzik.Qif.Writers
 {
-    internal static class CategoryListWriter
+    static class CategoryListWriter
     {
         internal static void Write(TextWriter writer, ICollection<CategoryListTransaction> list)
         {

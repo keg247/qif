@@ -2,7 +2,7 @@
 
 namespace Hazzik.Qif.Parsers
 {
-    internal class AssetParser : BasicTransactionParser
+    class AssetParser : BasicTransactionParser
     {
         public override void Yield(QifDocument document)
         {

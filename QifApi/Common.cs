@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Hazzik.Qif
 {
-    internal static class Common
+    static class Common
     {
         internal static bool GetBoolean(string value)
         {

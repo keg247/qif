@@ -2,7 +2,7 @@ using Hazzik.Qif.Transactions;
 
 namespace Hazzik.Qif.Parsers
 {
-    internal class BankParser : BasicTransactionParser
+    class BankParser : BasicTransactionParser
     {
         public override void Yield(QifDocument document)
         {
