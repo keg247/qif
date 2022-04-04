@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-using System.Xml.Linq;
 using Hazzik.Qif;
 
 namespace QifApiTest
@@ -11,7 +10,7 @@ namespace QifApiTest
         public MainUI()
         {
             InitializeComponent();
-            var fileName = Path.GetDirectoryName(Application.ExecutablePath) + "\\sample.qif";
+            var fileName = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) ?? ".", "sample.qif");
             using (StreamReader sr = new StreamReader(fileName))
             {
                 qifDomPropertyGrid.SelectedObject = QifDocument.Load(sr);
