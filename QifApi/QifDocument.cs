@@ -12,7 +12,7 @@ namespace Hazzik.Qif
     /// <summary>
     /// Represents a Document Object Model for a QIF file.
     /// </summary>
-    public class QifDocument
+    public partial class QifDocument
     {
         /// <summary>
         /// Represents a collection of bank transactions.

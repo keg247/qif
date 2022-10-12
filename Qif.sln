@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
+		AsyncGenerator.yml = AsyncGenerator.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{9AB66E1A-4BA5-41CF-8035-8F13B11B6B9D}"

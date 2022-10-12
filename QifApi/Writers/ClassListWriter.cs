@@ -5,7 +5,7 @@ using Hazzik.Qif.Transactions.Fields;
 
 namespace Hazzik.Qif.Writers
 {
-    static class ClassListWriter
+    static partial class ClassListWriter
     {
         internal static void Write(TextWriter writer, ICollection<ClassListTransaction> list)
         {

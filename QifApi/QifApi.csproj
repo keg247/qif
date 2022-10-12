@@ -17,6 +17,10 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <Compile Remove="Async/**" />
+  </ItemGroup>
+  
   <ItemGroup>
     <EmbeddedResource Update="Resorces.resx">
       <Generator>ResXFileCodeGenerator</Generator>

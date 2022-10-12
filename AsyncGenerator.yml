@@ -1,0 +1,18 @@
+projects:
+- filePath: QifApi/QifApi.csproj
+  targetFramework: net461
+  concurrentRun: true
+  applyChanges: true
+  analyzation:
+    methodConversion:
+      - conversion: Smart
+        all: true
+    callForwarding: true
+    cancellationTokens:
+      enabled: true
+      guards: true
+    scanMethodBody: true
+    scanForMissingAsyncMembers:
+      - all: true
+  transformation:
+    configureAwaitArgument: true

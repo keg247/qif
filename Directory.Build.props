@@ -2,6 +2,7 @@
     <PropertyGroup>
         <Description>A parser for Quicken Interchange Format (QIF)</Description>
         <Copyright>Copyright © Shane Walters 2015; Alex Zaytsev 2015-2022</Copyright>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <ItemGroup>
     </ItemGroup>
