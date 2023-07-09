@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22609.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B6651B4-9FCA-4335-BC15-B6464677B79A}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
+		AsyncGenerator.yml = AsyncGenerator.yml
 		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
-		AsyncGenerator.yml = AsyncGenerator.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{9AB66E1A-4BA5-41CF-8035-8F13B11B6B9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "ApiTest\ApiTest.csproj", "{9AB66E1A-4BA5-41CF-8035-8F13B11B6B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QifApi", "QifApi\QifApi.csproj", "{1CAE9016-19A8-477F-BE6C-1E8C09FC8DDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QifApi", "QifApi\QifApi.csproj", "{1CAE9016-19A8-477F-BE6C-1E8C09FC8DDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AC2CFA3-8182-4EB7-8C02-92C7C22C8381}
 	EndGlobalSection
 EndGlobal

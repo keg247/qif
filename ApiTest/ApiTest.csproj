@@ -1,15 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+	  <OutputType>WinExe</OutputType>
+	  <TargetFramework>net7.0-windows</TargetFramework>
+	  <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\QifApi\QifApi.csproj" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <None Update="sample.qif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
