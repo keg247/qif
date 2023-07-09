@@ -183,3 +183,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 .idea/
 /.vs
+/nuget.config
