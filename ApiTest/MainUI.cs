@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-using Hazzik.Qif;
+using Keg247.Qif;
 
 namespace QifApiTest
 {

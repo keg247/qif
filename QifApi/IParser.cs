@@ -1,4 +1,4 @@
-namespace Hazzik.Qif
+namespace Keg247.Qif
 {
     interface IParser
     {

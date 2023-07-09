@@ -1,6 +1,6 @@
-﻿using Hazzik.Qif.Transactions;
+﻿using Keg247.Qif.Transactions;
 
-namespace Hazzik.Qif.Parsers
+namespace Keg247.Qif.Parsers
 {
     class AssetParser : BasicTransactionParser
     {

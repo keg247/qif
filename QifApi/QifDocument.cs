@@ -1,13 +1,13 @@
-﻿using Hazzik.Qif.Parsers;
-using Hazzik.Qif.Transactions;
-using Hazzik.Qif.Transactions.Fields;
-using Hazzik.Qif.Writers;
+﻿using Keg247.Qif.Parsers;
+using Keg247.Qif.Transactions;
+using Keg247.Qif.Transactions.Fields;
+using Keg247.Qif.Writers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace Hazzik.Qif
+namespace Keg247.Qif
 {
     /// <summary>
     /// Represents a Document Object Model for a QIF file.

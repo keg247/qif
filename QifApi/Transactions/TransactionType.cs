@@ -1,5 +1,5 @@
 ﻿
-namespace Hazzik.Qif.Transactions
+namespace Keg247.Qif.Transactions
 {
     /// <summary>
     /// Memorized transaction types.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Hazzik.Qif
+namespace Keg247.Qif
 {
     static class Common
     {

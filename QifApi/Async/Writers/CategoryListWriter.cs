@@ -11,10 +11,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using Hazzik.Qif.Transactions;
-using Hazzik.Qif.Transactions.Fields;
+using Keg247.Qif.Transactions;
+using Keg247.Qif.Transactions.Fields;
 
-namespace Hazzik.Qif.Writers
+namespace Keg247.Qif.Writers
 {
     using System.Threading.Tasks;
     static partial class CategoryListWriter

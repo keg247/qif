@@ -2,15 +2,21 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <AssemblyName>Hazzik.Qif</AssemblyName>
-    <RootNamespace>Hazzik.Qif</RootNamespace>
-    <PackageProjectUrl>https://github.com/hazzik/qif</PackageProjectUrl>
+    <AssemblyName>Keg247.Qif</AssemblyName>
+    <RootNamespace>Keg247.Qif</RootNamespace>
+    <PackageProjectUrl>https://github.com/keg247/qif</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/keg247/qif</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>qif</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <FileVersion>1.0.0</FileVersion>
+    <PackageVersion>2.0.0</PackageVersion>
+    <FileVersion>2.0.0</FileVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Title>$(AssemblyName)</Title>
+    <Version>$(PackageVersion)</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
-using Hazzik.Qif.Transactions;
-using Hazzik.Qif.Transactions.Fields;
+using Keg247.Qif.Transactions;
+using Keg247.Qif.Transactions.Fields;
 
-namespace Hazzik.Qif.Parsers
+namespace Keg247.Qif.Parsers
 {
     class ClassListParser : IParser
     {

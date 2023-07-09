@@ -12,12 +12,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Hazzik.Qif.Parsers;
-using Hazzik.Qif.Transactions;
-using Hazzik.Qif.Transactions.Fields;
-using Hazzik.Qif.Writers;
+using Keg247.Qif.Parsers;
+using Keg247.Qif.Transactions;
+using Keg247.Qif.Transactions.Fields;
+using Keg247.Qif.Writers;
 
-namespace Hazzik.Qif
+namespace Keg247.Qif
 {
     using System.Threading.Tasks;
     public partial class QifDocument

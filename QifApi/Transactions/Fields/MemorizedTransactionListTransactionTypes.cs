@@ -1,4 +1,4 @@
-﻿namespace Hazzik.Qif.Transactions.Fields
+﻿namespace Keg247.Qif.Transactions.Fields
 {
     /// <summary>
     /// The memorized transaction list transaction types.

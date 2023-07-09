@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hazzik.Qif.Transactions
+namespace Keg247.Qif.Transactions
 {
     /// <summary>
     /// An account list transaction. This is used to describe an account.

@@ -1,5 +1,5 @@
 ﻿
-namespace Hazzik.Qif.Transactions.Fields
+namespace Keg247.Qif.Transactions.Fields
 {
     /// <summary>
     /// The account information fields used in transactions.
