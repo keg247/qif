@@ -90,6 +90,7 @@ namespace Hazzik.Qif
             IParser parser = null;
             while ((line = await (reader.ReadLineAsync()).ConfigureAwait(true)) != null)
             {
+                line = line.Trim();
                 switch (line[0])
                 {
                     case InformationFields.TransactionType:
