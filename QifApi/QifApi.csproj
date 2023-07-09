@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net40;net45;net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>Hazzik.Qif</AssemblyName>
     <RootNamespace>Hazzik.Qif</RootNamespace>
     <PackageProjectUrl>https://github.com/hazzik/qif</PackageProjectUrl>
@@ -15,10 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <Compile Remove="Async/**" />
   </ItemGroup>
   
   <ItemGroup>
