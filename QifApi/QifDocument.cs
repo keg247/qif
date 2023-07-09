@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using Hazzik.Qif.Parsers;
+﻿using Hazzik.Qif.Parsers;
 using Hazzik.Qif.Transactions;
 using Hazzik.Qif.Transactions.Fields;
 using Hazzik.Qif.Writers;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 namespace Hazzik.Qif
 {
@@ -144,6 +144,7 @@ namespace Hazzik.Qif
             IParser parser = null;
             while ((line = reader.ReadLine()) != null)
             {
+                line = line.Trim();
                 switch (line[0])
                 {
                     case InformationFields.TransactionType:
@@ -167,7 +168,7 @@ namespace Hazzik.Qif
         {
             switch (line)
             {
-                case Headers.Bank  :
+                case Headers.Bank:
                     return new BankParser();
                 case Headers.Cash:
                     return new CashParser();
