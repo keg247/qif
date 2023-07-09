@@ -31,10 +31,12 @@ namespace Hazzik.Qif.Transactions
         public bool IncomeCategory { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the item is an expense category.
+        /// Gets or sets a value indicating whether the item is an expense category. Set to true
+        /// by default so that a category defaults to being an Expense category if the type is not 
+        /// defined in the file, which is how Quicken handles QIF files.
         /// </summary>
         /// <value><c>true</c> if expense category; otherwise, <c>false</c>.</value>
-        public bool ExpenseCategory { get; set; }
+        public bool ExpenseCategory { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the budget amount.

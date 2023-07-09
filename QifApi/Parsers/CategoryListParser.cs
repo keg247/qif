@@ -28,13 +28,15 @@ namespace Hazzik.Qif.Parsers
                     item.Description = value;
                     break;
                 case CategoryListFields.ExpenseCategory:
-                    item.ExpenseCategory = Common.GetBoolean(value);
+                    item.ExpenseCategory = true;
+                    item.IncomeCategory = false;
                     break;
                 case CategoryListFields.IncomeCategory:
-                    item.IncomeCategory = Common.GetBoolean(value);
+                    item.ExpenseCategory = false;
+                    item.IncomeCategory = true;
                     break;
                 case CategoryListFields.TaxRelated:
-                    item.TaxRelated = Common.GetBoolean(value);
+                    item.TaxRelated = true;
                     break;
                 case CategoryListFields.TaxSchedule:
                     item.TaxSchedule = value;
